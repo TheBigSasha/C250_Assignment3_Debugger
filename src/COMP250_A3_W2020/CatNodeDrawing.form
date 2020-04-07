@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="COMP250_A3_W2020.CViz.CatNodeDrawing">
+  <grid id="27dc6" binding="panel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="ca8c6" binding="innerPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="1c216" binding="scrollPane">
+            <constraints border-constraint="South"/>
+            <properties>
+              <horizontalScrollBarPolicy value="31"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="dade7" binding="CatsList" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                <constraints/>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
+          </scrollpane>
+          <component id="68061" class="javax.swing.JTextArea" binding="CatsOfMonth">
+            <constraints border-constraint="North"/>
+            <properties>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
+              <font size="18"/>
+              <lineWrap value="true"/>
+              <opaque value="true"/>
+              <visible value="false"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
