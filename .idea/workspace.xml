@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7734e7e-5730-42e8-8760-77d7c1343762" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
-  <component name="RunManager" selected="Application.MiniTester">
+  <component name="RunManager" selected="Application.CViz">
     <configuration name="CViz" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="COMP250_A3_W2020.CViz" />
       <module name="C250_Assignment3_Debugger" />
@@ -69,8 +69,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MiniTester" />
         <item itemvalue="Application.CViz" />
+        <item itemvalue="Application.MiniTester" />
       </list>
     </recent_temporary>
   </component>
@@ -89,6 +89,7 @@
       <workItem from="1586296417533" duration="52000" />
       <workItem from="1586296477423" duration="63000" />
       <workItem from="1586300846905" duration="2026000" />
+      <workItem from="1586304994166" duration="1149000" />
     </task>
     <task id="LOCAL-00001" summary="remove IntelliJ specific UI elements">
       <created>1586035512776</created>
@@ -111,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586296530958</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix IntelliJ IDEA settings">
+      <created>1586305154540</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586305154540</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,7 +128,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="remove IntelliJ specific UI elements" />
     <MESSAGE value="change code generation from class to source, remove GridLayoutManager (unsupported in Eclipse)" />
-    <option name="LAST_COMMIT_MESSAGE" value="change code generation from class to source, remove GridLayoutManager (unsupported in Eclipse)" />
+    <MESSAGE value="Fix IntelliJ IDEA settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix IntelliJ IDEA settings" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -140,9 +149,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="734" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586304927167" />
-    <state x="366" y="129" width="1245" height="847" key="CommitChangelistDialog2" timestamp="1586296530898">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="413" y="137" width="1245" height="847" key="CommitChangelistDialog2" timestamp="1586305153962">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
+    <state x="413" y="137" key="CommitChangelistDialog2/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305153962" />
     <state x="366" y="129" width="1245" height="847" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296530898" />
     <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1586286963415">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -161,34 +171,35 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="650" y="239" width="677" height="626" key="Github.UntrackedFilesDialog/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296516670" />
-    <state width="2519" height="404" key="GridCell.Tab.0.bottom" timestamp="1586305136598">
+    <state width="2519" height="404" key="GridCell.Tab.0.bottom" timestamp="1586305834108">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.bottom/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305136598" />
+    <state width="2519" height="404" key="GridCell.Tab.0.bottom/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305834108" />
     <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
-    <state width="2519" height="404" key="GridCell.Tab.0.center" timestamp="1586305136598">
+    <state width="2519" height="404" key="GridCell.Tab.0.center" timestamp="1586305834108">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.center/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305136598" />
+    <state width="2519" height="404" key="GridCell.Tab.0.center/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305834108" />
     <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
-    <state width="2519" height="404" key="GridCell.Tab.0.left" timestamp="1586305136597">
+    <state width="2519" height="404" key="GridCell.Tab.0.left" timestamp="1586305834107">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.left/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305136597" />
+    <state width="2519" height="404" key="GridCell.Tab.0.left/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305834107" />
     <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
-    <state width="2519" height="404" key="GridCell.Tab.0.right" timestamp="1586305136598">
+    <state width="2519" height="404" key="GridCell.Tab.0.right" timestamp="1586305834108">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.right/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305136598" />
+    <state width="2519" height="404" key="GridCell.Tab.0.right/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305834108" />
     <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
     <state x="573" y="214" width="1024" height="845" key="SettingsEditor" timestamp="1586304624953">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="573" y="214" key="SettingsEditor/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586304624953" />
     <state x="482" y="187" width="1024" height="845" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296539342" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586296531830">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="720" y="349" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586305155929">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
+    <state x="720" y="349" key="Vcs.Push.Dialog.v2/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586305155929" />
     <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296531830" />
     <state x="804" y="473" key="com.intellij.ide.util.TipDialog" timestamp="1586304995251">
       <screen x="0" y="0" width="2560" height="1410" />

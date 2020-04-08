@@ -90,7 +90,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     }
 
 
-    private int sum(int input[]) {
+    private int sum(int[] input) {
         int output = 0;
         for (int i : input) {
             output += i;
@@ -345,6 +345,8 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         int whichToRemove = 0;
         if (list.size() > 0) {
             whichToRemove = rand.nextInt(list.size());
+        } else {
+            return "No nodes to remove from";
         }
         removeCat(list.get(whichToRemove));
         CatTreeIterator iter2 = new CatTreeIterator();
@@ -354,9 +356,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - 1) {
-            return "Remove error? Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter) + " cat removed was " + list.get(whichToRemove).name;
+            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter + " cat removed was " + list.get(whichToRemove).name;
         } else {
-            return "Random remove probably succeeded. Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Random remove probably succeeded. Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         }
     }
 
@@ -382,9 +384,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - toExtermiante) {
-            return "Remove error? Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         } else {
-            return "Random remove probably succeeded. Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Random remove probably succeeded. Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         }
     }
 
@@ -392,7 +394,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     /*This function pauses code execution for an input amount of time in milliseconds.
     It exists only because delay() isn't a thing in java. */
         try {
-            Thread.currentThread().sleep(pauseTimeMillis);
+            Thread.sleep(pauseTimeMillis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -450,9 +452,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - toExtermiante) {
-            return "Remove error? Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         } else {
-            return "Random remove probably succeeded. Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Random remove probably succeeded. Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         }
     }
 
@@ -478,9 +480,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - toExtermiante) {
-            return "Remove error? Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         } else {
-            return "Random remove probably succeeded. Number of cats before remove was " + Integer.toString(numberOfNodesBefore) + " after remove was " + Integer.toString(numberOfNodesAfter);
+            return "Random remove probably succeeded. Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         }
     }
 
@@ -491,7 +493,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             iter++;
             addCat(rand.nextCatInfo());
         }
-        return "added " + Integer.toString(numToAdd) + " cats to the tree";
+        return "added " + numToAdd + " cats to the tree";
 
     }
 
@@ -499,6 +501,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
 
     @Override
     public void addCat(CatInfo c) {
+        if (root == null) {
+            root = new CatNode(c);
+        }
         super.addCat(c);
         refresh();
     }
@@ -913,7 +918,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
 
         private void drawNodeWithChildren(Graphics g, int[] coords, CatNode node) {
             //System.out.println("    [CViz / Debug] " + "drawing node " + node + " at coords " + coords[0] + ", " + coords[1]);
-            StringBuilder title = new StringBuilder("");
+            StringBuilder title = new StringBuilder();
             if (drawMonthHiredRadioButton.isSelected()) {
                 title.append(node.data.monthHired);
             }
