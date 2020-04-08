@@ -231,6 +231,18 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     //======================= UI Listener Methods =========================
 
     private void addListeners() {
+        GraphScroller.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                GraphRegion.repaint();
+            }
+        });
+        GraphScroller.getHorizontalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                GraphRegion.repaint();
+            }
+        });
         catScroller.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
             @Override
             public void adjustmentValueChanged(AdjustmentEvent e) {
@@ -701,17 +713,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         MainPanel.setMinimumSize(new Dimension(556, 415));
         MainPanel.setPreferredSize(new Dimension(1000, 415));
         MainWindow.add(MainPanel, BorderLayout.CENTER);
-        GraphRegion.setMinimumSize(new Dimension(300, 200));
-        GridBagConstraints gbc;
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 100.0;
-        gbc.weighty = 10.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        MainPanel.add(GraphRegion, gbc);
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridBagLayout());
+        GridBagConstraints gbc;
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -819,6 +823,16 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
         panel1.add(drawSubtreesRadioButton, gbc);
+        GraphScroller = new JScrollPane();
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 100.0;
+        gbc.weighty = 10.0;
+        gbc.fill = GridBagConstraints.BOTH;
+        MainPanel.add(GraphScroller, gbc);
+        GraphRegion.setMinimumSize(new Dimension(300, 200));
+        GraphScroller.setViewportView(GraphRegion);
         catScroller = new JScrollPane();
         catScroller.setHorizontalScrollBarPolicy(30);
         catScroller.setMaximumSize(new Dimension(400, 32767));
@@ -1170,9 +1184,31 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         boolean mainWindow = false;
 
         public GraphZone() {
+
             //setBorder(BorderFactory.createLineBorder(Color.black));
-            this.idealSize = new Dimension(1280, 800);
+            this.idealSize = new Dimension(1080, 1080);
             this.mainWindow = true;
+            try {
+                GraphScroller.getHorizontalScrollBar().setValue(540);
+            } catch (Exception n) {
+                //showUser("    [CViz / Debug] " + "not resized");
+            }
+            /*
+            if (mainWindow) {
+                try {
+                    GraphScroller.getHorizontalScrollBar().setValue(GraphRegion.getWidth() / 2);
+                } catch (Exception e) {
+                    try {
+                        GraphScroller.getHorizontalScrollBar().setValue(GraphScroller.getWidth() / 2);
+                    } catch (Exception f) {
+                        try {
+                            GraphScroller.getHorizontalScrollBar().setValue(960);
+                        } catch (Exception n) {
+                            //showUser("    [CViz / Debug] " + "not resized");
+                        }
+                    }
+                }
+            }*/
         }
 
         public GraphZone(Dimension d, CatNode startNode) {
@@ -1199,21 +1235,6 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             this.setPreferredSize(this.getPreferredSize());
 
             //Attempt to automatically scroll to the middle of the graphics region
-            if (mainWindow) {
-                try {
-                    GraphScroller.getHorizontalScrollBar().setValue(GraphRegion.getWidth() / 3);
-                } catch (Exception e) {
-                    try {
-                        GraphScroller.getHorizontalScrollBar().setValue(GraphScroller.getWidth() / 2);
-                    } catch (Exception f) {
-                        try {
-                            GraphScroller.getHorizontalScrollBar().setValue(600);
-                        } catch (Exception n) {
-                            //showUser("    [CViz / Debug] " + "not resized");
-                        }
-                    }
-                }
-            }
 
         }
 

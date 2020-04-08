@@ -19,17 +19,6 @@
           <title-color color="-4473925"/>
         </border>
         <children>
-          <grid id="9138c" binding="GraphRegion" custom-create="true" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="100.0" weighty="10.0"/>
-            </constraints>
-            <properties>
-              <minimumSize width="300" height="200"/>
-            </properties>
-            <border type="none"/>
-            <children/>
-          </grid>
           <grid id="1b759" layout-manager="GridBagLayout">
             <constraints>
               <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -163,6 +152,24 @@
               </component>
             </children>
           </grid>
+          <scrollpane id="2b4b8" binding="GraphScroller">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="100.0" weighty="10.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="9138c" binding="GraphRegion" custom-create="true" layout-manager="GridBagLayout">
+                <constraints/>
+                <properties>
+                  <minimumSize width="300" height="200"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
+          </scrollpane>
         </children>
       </grid>
       <scrollpane id="c9408" binding="catScroller">
