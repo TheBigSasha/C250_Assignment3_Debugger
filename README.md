@@ -5,6 +5,7 @@ This tester provides a visual interface for interacting with your binary tree. M
 
 # Installation
 ## Note on Latest Update:
+### Note: This is no longer possible as the old repository has been made private until further notice.
 In your source code for CatTree.java, you must change <code>CatTreeIterator</code> to either protected or public for this tester to compile in the latest version. If you do not want to do this, please install a version [before commit 29](https://github.com/TheBigSasha/COMP250_A3_W2020_PUBLISHED_DEBUGGER/tree/32b854e9fbbb39edaccd4a054008e74317acd426).
 
 ## Installation: Standard Method
@@ -12,16 +13,16 @@ In your source code for CatTree.java, you must change <code>CatTreeIterator</cod
 Clone this repository to your directory of choice.
 Add your assignment .java files <code>CatTree.java, CatInfo.java</code> and any of your own classes to the <code>COMP250_A3_W2020</code> package, in the location of <code>Put Your java files here.txt</code>
 
-![IntelliJ Recommended](https://raw.githubusercontent.com/TheBigSasha/COMP250_A3_W2020_PUBLISHED_DEBUGGER/master/IntelliJ%20Recommended.jpg)
-![Eclipse Recommended](https://raw.githubusercontent.com/TheBigSasha/COMP250_A3_W2020_PUBLISHED_DEBUGGER/master/EclipseRecommended.jpg)
+![IntelliJ Recommended](https://raw.githubusercontent.com/TheBigSasha/C250_Assignment3_Debugger/master/IntelliJ%20Recommended.jpg)
+![Eclipse Recommended](https://raw.githubusercontent.com/TheBigSasha/C250_Assignment3_Debugger/master/EclipseRecommended.jpg)
 
 ## Installation: Submodule Method
 
 *This method is useful if you are managing your own git repository for this project and do not want to fork this one.* It allows you to maintain your existing workflow and still keep up to date with new versions of the visualizer.
 
-IntelliJ Idea: Right click your project folder -> open in terminal -> enter command: <code>git submodule add https://github.com/TheBigSasha/COMP250_A3_W2020_PUBLISHED_DEBUGGER</code>
+IntelliJ Idea: Right click your project folder -> open in terminal -> enter command: <code>git submodule add https://github.com/TheBigSasha/C250_Assignment3_Debugger</code>
 
-Other IDE on Linux / Mac: Open terminal. CD your project directory, enter command: <code>git submodule add https://github.com/TheBigSasha/COMP250_A3_W2020_PUBLISHED_DEBUGGER</code>
+Other IDE on Linux / Mac: Open terminal. CD your project directory, enter command: <code>git submodule add https://github.com/TheBigSasha/C250_Assignment3_Debugger</code>
 
 Other IDE on Windows: [Install Git Bash](https://gitforwindows.org/) Follow steps for Linux/Mac using Git Bash.
 
