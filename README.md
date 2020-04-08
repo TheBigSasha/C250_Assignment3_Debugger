@@ -4,9 +4,6 @@
 This tester provides a visual interface for interacting with your binary tree. More feaures for automated testing to be added. Have fun!
 
 # Installation
-## Note on Latest Update:
-### Note: This is no longer possible as the old repository has been made private until further notice.
-In your source code for CatTree.java, you must change <code>CatTreeIterator</code> to either protected or public for this tester to compile in the latest version. If you do not want to do this, please install a version [before commit 29](https://github.com/TheBigSasha/COMP250_A3_W2020_PUBLISHED_DEBUGGER/tree/32b854e9fbbb39edaccd4a054008e74317acd426).
 
 ## Installation: Standard Method
 
