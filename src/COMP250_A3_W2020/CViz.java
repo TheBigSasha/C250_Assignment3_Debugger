@@ -1201,7 +1201,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
 
     class GraphZone extends JPanel {                    //Responsible for drawing the binary tree
         Dimension idealSize;
-        CatNode startNode = root;
+        CatNode startNode;
         boolean mainWindow = false;
 
         public GraphZone() {
@@ -1209,6 +1209,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             //setBorder(BorderFactory.createLineBorder(Color.black));
             this.idealSize = new Dimension(1080, 1080);
             this.mainWindow = true;
+            this.startNode = root;
             try {
                 GraphScroller.getHorizontalScrollBar().setValue(540);
             } catch (Exception n) {
@@ -1245,6 +1246,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             //Draw the tree
             super.paintComponent(g);
             int[] start = {this.getWidth() / 2, 20};
+            if (mainWindow) {
+                this.startNode = root;
+            }
             if (startNode != null) {
                 drawNodeWithChildren(g, start, startNode);
             } else {
