@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class RandomCats extends CatTree {
     Random rand;
     ArrayList<String> names = new ArrayList<String>();
-    File Lastnames = new File("COMP250_A3_W2020_PUBLISHED_DEBUGGER/supportfiles/last_names.all.txt");
+    File Lastnames = new File("src/COMP250_A3_W2020/Put Your java files here.txt");
 
     public RandomCats(long seed) {
         super(new CatInfo("trick to access inner methods of cattree :) Ignore me", 1, 10, 243, 0));

@@ -117,7 +117,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             CostPlanningDisplay.setToolTipText("No zeroes: " + displayArrayNoZero(costPlanning(CostPlanningSlider.getValue())));
             CostPlanningSlider.setToolTipText(displayArray(costPlanning(CostPlanningSlider.getValue())) + " over " + CostPlanningSlider.getValue() + " months.");
         } catch (Exception e) {
-            CostPlanningDisplay.setText("Error");
+            CostPlanningDisplay.setText("0");
         }
         try {
             FluffiestDisplay.setText(Integer.toString(fluffiest()));
