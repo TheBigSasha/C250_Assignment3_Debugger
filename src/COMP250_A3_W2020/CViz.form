@@ -19,7 +19,7 @@
           <title-color color="-4473925"/>
         </border>
         <children>
-          <grid id="1b759" layout-manager="GridBagLayout">
+          <grid id="1b759" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
@@ -27,22 +27,73 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="14144" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
+              <component id="3c157" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <enabled value="true"/>
+                  <font name="Arial Black" size="14" style="1"/>
+                  <text value="Visualization Controls"/>
+                  <verticalAlignment value="1"/>
+                  <verticalTextPosition value="1"/>
+                </properties>
+              </component>
+              <grid id="4f44e" layout-manager="GridBagLayout">
+                <constraints border-constraint="West"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="b9b77" class="javax.swing.JRadioButton" binding="drawMonthHiredRadioButton" default-binding="true">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <selected value="true"/>
+                      <text value="Draw Month Hired"/>
+                    </properties>
+                  </component>
+                  <component id="1073b" class="javax.swing.JRadioButton" binding="drawNamesRadioButton" default-binding="true">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Draw Names"/>
+                    </properties>
+                  </component>
+                  <component id="22215" class="javax.swing.JRadioButton" binding="drawSamesRadioButton" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Draw Sames"/>
+                    </properties>
+                  </component>
+                  <component id="f39a3" class="javax.swing.JRadioButton" binding="drawSubtreesRadioButton" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Draw Subtrees"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="14144" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="East"/>
                 <properties/>
                 <border type="none"/>
                 <children>
                   <grid id="684ac" layout-manager="GridBagLayout">
-                    <constraints/>
+                    <constraints border-constraint="Center"/>
                     <properties/>
                     <border type="none"/>
                     <children>
                       <component id="260ef" class="javax.swing.JSlider" binding="WideningSlider">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                           <gridbag weightx="1.0" weighty="1.0"/>
                         </constraints>
                         <properties>
@@ -67,13 +118,13 @@
                     </children>
                   </grid>
                   <grid id="76615" layout-manager="GridBagLayout">
-                    <constraints/>
+                    <constraints border-constraint="East"/>
                     <properties/>
                     <border type="none"/>
                     <children>
                       <component id="df001" class="javax.swing.JSlider" binding="RandomnessSlider">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                           <gridbag weightx="1.0" weighty="1.0"/>
                         </constraints>
                         <properties>
@@ -96,60 +147,13 @@
                     </children>
                   </grid>
                   <component id="6c90f" class="javax.swing.JButton" binding="forceRefreshButton" default-binding="true">
-                    <constraints/>
+                    <constraints border-constraint="West"/>
                     <properties>
                       <text value="Force Refresh"/>
                     </properties>
                   </component>
                 </children>
               </grid>
-              <grid id="4f44e" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="22215" class="javax.swing.JRadioButton" binding="drawSamesRadioButton" default-binding="true">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="Draw Sames"/>
-                    </properties>
-                  </component>
-                  <component id="1073b" class="javax.swing.JRadioButton" binding="drawNamesRadioButton" default-binding="true">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="Draw Names"/>
-                    </properties>
-                  </component>
-                  <component id="b9b77" class="javax.swing.JRadioButton" binding="drawMonthHiredRadioButton" default-binding="true">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <selected value="true"/>
-                      <text value="Draw Month Hired"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <component id="f39a3" class="javax.swing.JRadioButton" binding="drawSubtreesRadioButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <text value="Draw Subtrees"/>
-                </properties>
-              </component>
             </children>
           </grid>
           <scrollpane id="2b4b8" binding="GraphScroller">
@@ -175,6 +179,7 @@
       <scrollpane id="c9408" binding="catScroller">
         <constraints border-constraint="West"/>
         <properties>
+          <autoscrolls value="false"/>
           <horizontalScrollBarPolicy value="30"/>
           <maximumSize width="400" height="32767"/>
           <minimumSize width="300" height="39"/>

@@ -9,6 +9,7 @@ import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class CViz extends CatTree {                         //TODO: Cleanup console outputs
@@ -131,10 +132,11 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         }
         try {
             ArrayList<CatInfo> list = new ArrayList<>();
-            CatTreeIterator iter = new CatTreeIterator();
-            for (CatTreeIterator it = iter; it.hasNext(); ) {
-                CatInfo n = it.next();
-                list.add(n);
+
+            Iterator<CatInfo> iter = this.iterator();
+            for (; iter.hasNext(); ) {
+                CatInfo c = iter.next();
+                list.add(c);
             }
             int numberOfNodes = list.size();
             CatsInTreeDisplay.setText(Integer.toString(numberOfNodes));
@@ -211,6 +213,18 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     }
 
     private void refresh() {
+        int GraphX = 0;
+        int GraphY = 0;
+        try {
+            GraphX = GraphScroller.getHorizontalScrollBar().getValue();
+            GraphY = GraphScroller.getVerticalScrollBar().getValue();
+        } catch (Exception e) {
+        }
+        int ListY = 0;
+        try {
+            ListY = catScroller.getVerticalScrollBar().getValue();
+        } catch (Exception e) {
+        }
         this.GraphRegion.updateUI();
         updateList();
         GraphRegion.repaint();
@@ -218,6 +232,15 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         ListOfCatsSide.revalidate();
         try {
             displayNumbers();
+        } catch (Exception e) {
+        }
+        try {
+            catScroller.getVerticalScrollBar().setValue(ListY);
+        } catch (Exception e) {
+        }
+        try {
+            GraphScroller.getVerticalScrollBar().setValue(GraphY);
+            GraphScroller.getHorizontalScrollBar().setValue(GraphX);
         } catch (Exception e) {
         }
     }
@@ -437,9 +460,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         CatNode root = this.root;
         CatNode victim;
         ArrayList<CatInfo> list = new ArrayList<>();
-        CatTreeIterator iter = new CatTreeIterator();
-        for (CatTreeIterator it = iter; it.hasNext(); ) {
-            CatInfo n = it.next();
+        Iterator<CatInfo> iter = this.iterator();
+        for (; iter.hasNext(); ) {
+            CatInfo n = iter.next();
             list.add(n);
         }
         int numberOfNodesBefore = list.size();
@@ -452,10 +475,10 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         }
         removeCat(list.get(whichToRemove));
         list.remove(whichToRemove);
-        CatTreeIterator iter2 = new CatTreeIterator();
+        Iterator<CatInfo> iter2 = this.iterator();
         int numberOfNodesAfter = 0;
-        for (CatTreeIterator it = iter2; it.hasNext(); ) {
-            CatInfo n = it.next();
+        for (; iter2.hasNext(); ) {
+            CatInfo C = iter2.next();
             numberOfNodesAfter++;
         }
         String catEssentials;
@@ -587,9 +610,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     private String removeCats() {
         ArrayList<CatNode> theDeparted = new ArrayList<>();
         ArrayList<CatInfo> list = new ArrayList<>();
-        CatTreeIterator iter = new CatTreeIterator();
-        for (CatTreeIterator it = iter; it.hasNext(); ) {
-            CatInfo n = it.next();
+        Iterator<CatInfo> iter = this.iterator();
+        for (; iter.hasNext(); ) {
+            CatInfo n = iter.next();
             list.add(n);
         }
         int numberOfNodesBefore = list.size();
@@ -601,10 +624,10 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             theDeparted.add(this.findCat(root, list.get(whichToRemove)));
             removeCat(list.get(whichToRemove));
         }
-        CatTreeIterator iter2 = new CatTreeIterator();
+        Iterator<CatInfo> iter2 = this.iterator();
         int numberOfNodesAfter = 0;
-        for (CatTreeIterator it = iter2; it.hasNext(); ) {
-            CatInfo n = it.next();
+        for (; iter2.hasNext(); ) {
+            CatInfo n = iter2.next();
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - toExtermiante) {
@@ -640,9 +663,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
 
     private String removeAllCats() {
         ArrayList<CatInfo> list = new ArrayList<>();
-        CatTreeIterator iter = new CatTreeIterator();
-        for (CatTreeIterator it = iter; it.hasNext(); ) {
-            CatInfo n = it.next();
+        Iterator<CatInfo> iter = this.iterator();
+        for (; iter.hasNext(); ) {
+            CatInfo n = iter.next();
             list.add(n);
         }
         int numberOfNodesBefore = list.size();
@@ -653,10 +676,10 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             whichToRemove = rand.nextInt(list.size());
             removeCat(list.get(whichToRemove));
         }
-        CatTreeIterator iter2 = new CatTreeIterator();
+        Iterator<CatInfo> iter2 = this.iterator();
         int numberOfNodesAfter = 0;
-        for (CatTreeIterator it = iter2; it.hasNext(); ) {
-            CatInfo n = it.next();
+        for (; iter2.hasNext(); ) {
+            CatInfo n = iter2.next();
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - toExtermiante) {
@@ -714,7 +737,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         MainPanel.setPreferredSize(new Dimension(1000, 415));
         MainWindow.add(MainPanel, BorderLayout.CENTER);
         final JPanel panel1 = new JPanel();
-        panel1.setLayout(new GridBagLayout());
+        panel1.setLayout(new BorderLayout(0, 0));
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -722,17 +745,52 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridheight = 2;
         gbc.fill = GridBagConstraints.BOTH;
         MainPanel.add(panel1, gbc);
+        final JLabel label1 = new JLabel();
+        label1.setEnabled(true);
+        Font label1Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label1.getFont());
+        if (label1Font != null) label1.setFont(label1Font);
+        label1.setText("Visualization Controls");
+        label1.setVerticalAlignment(1);
+        label1.setVerticalTextPosition(1);
+        panel1.add(label1, BorderLayout.NORTH);
         final JPanel panel2 = new JPanel();
-        panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        panel2.setLayout(new GridBagLayout());
+        panel1.add(panel2, BorderLayout.WEST);
+        drawMonthHiredRadioButton = new JRadioButton();
+        drawMonthHiredRadioButton.setSelected(true);
+        drawMonthHiredRadioButton.setText("Draw Month Hired");
         gbc = new GridBagConstraints();
-        gbc.gridx = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel2.add(drawMonthHiredRadioButton, gbc);
+        drawNamesRadioButton = new JRadioButton();
+        drawNamesRadioButton.setText("Draw Names");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel2.add(drawNamesRadioButton, gbc);
+        drawSamesRadioButton = new JRadioButton();
+        drawSamesRadioButton.setText("Draw Sames");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
         gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel1.add(panel2, gbc);
+        gbc.anchor = GridBagConstraints.WEST;
+        panel2.add(drawSamesRadioButton, gbc);
+        drawSubtreesRadioButton = new JRadioButton();
+        drawSubtreesRadioButton.setText("Draw Subtrees");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel2.add(drawSubtreesRadioButton, gbc);
         final JPanel panel3 = new JPanel();
-        panel3.setLayout(new GridBagLayout());
-        panel2.add(panel3);
+        panel3.setLayout(new BorderLayout(0, 0));
+        panel1.add(panel3, BorderLayout.EAST);
+        final JPanel panel4 = new JPanel();
+        panel4.setLayout(new GridBagLayout());
+        panel3.add(panel4, BorderLayout.CENTER);
         WideningSlider = new JSlider();
         WideningSlider.setMaximum(10);
         WideningSlider.setMinimum(1);
@@ -746,21 +804,20 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel3.add(WideningSlider, gbc);
-        final JLabel label1 = new JLabel();
-        label1.setText("Widening Coefficent");
+        panel4.add(WideningSlider, gbc);
+        final JLabel label2 = new JLabel();
+        label2.setText("Widening Coefficent");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.SOUTH;
-        panel3.add(label1, gbc);
-        final JPanel panel4 = new JPanel();
-        panel4.setLayout(new GridBagLayout());
-        panel2.add(panel4);
+        panel4.add(label2, gbc);
+        final JPanel panel5 = new JPanel();
+        panel5.setLayout(new GridBagLayout());
+        panel3.add(panel5, BorderLayout.EAST);
         RandomnessSlider = new JSlider();
         RandomnessSlider.setMaximum(22);
         RandomnessSlider.setMinimum(1);
@@ -772,57 +829,20 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        panel4.add(RandomnessSlider, gbc);
-        final JLabel label2 = new JLabel();
-        label2.setText("Randomness Coefficient");
+        panel5.add(RandomnessSlider, gbc);
+        final JLabel label3 = new JLabel();
+        label3.setText("Randomness Coefficient");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.SOUTH;
-        panel4.add(label2, gbc);
+        panel5.add(label3, gbc);
         forceRefreshButton = new JButton();
         forceRefreshButton.setText("Force Refresh");
-        panel2.add(forceRefreshButton);
-        final JPanel panel5 = new JPanel();
-        panel5.setLayout(new GridBagLayout());
-        gbc = new GridBagConstraints();
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.BOTH;
-        panel1.add(panel5, gbc);
-        drawSamesRadioButton = new JRadioButton();
-        drawSamesRadioButton.setText("Draw Sames");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.anchor = GridBagConstraints.WEST;
-        panel5.add(drawSamesRadioButton, gbc);
-        drawNamesRadioButton = new JRadioButton();
-        drawNamesRadioButton.setText("Draw Names");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.anchor = GridBagConstraints.WEST;
-        panel5.add(drawNamesRadioButton, gbc);
-        drawMonthHiredRadioButton = new JRadioButton();
-        drawMonthHiredRadioButton.setSelected(true);
-        drawMonthHiredRadioButton.setText("Draw Month Hired");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
-        panel5.add(drawMonthHiredRadioButton, gbc);
-        drawSubtreesRadioButton = new JRadioButton();
-        drawSubtreesRadioButton.setText("Draw Subtrees");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
-        panel1.add(drawSubtreesRadioButton, gbc);
+        panel3.add(forceRefreshButton, BorderLayout.WEST);
         GraphScroller = new JScrollPane();
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -834,6 +854,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         GraphRegion.setMinimumSize(new Dimension(300, 200));
         GraphScroller.setViewportView(GraphRegion);
         catScroller = new JScrollPane();
+        catScroller.setAutoscrolls(false);
         catScroller.setHorizontalScrollBarPolicy(30);
         catScroller.setMaximumSize(new Dimension(400, 32767));
         catScroller.setMinimumSize(new Dimension(300, 39));
@@ -845,9 +866,9 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         final JPanel panel6 = new JPanel();
         panel6.setLayout(new BorderLayout(0, 0));
         MainWindow.add(panel6, BorderLayout.SOUTH);
-        final JLabel label3 = new JLabel();
-        label3.setText("Status:");
-        panel6.add(label3, BorderLayout.WEST);
+        final JLabel label4 = new JLabel();
+        label4.setText("Status:");
+        panel6.add(label4, BorderLayout.WEST);
         Status = new JLabel();
         Status.setHorizontalTextPosition(2);
         Status.setText("<current status>");
@@ -872,17 +893,17 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 4;
         gbc.anchor = GridBagConstraints.WEST;
         panel7.add(panel8, gbc);
-        final JLabel label4 = new JLabel();
-        label4.setEnabled(true);
-        Font label4Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label4.getFont());
-        if (label4Font != null) label4.setFont(label4Font);
-        label4.setHorizontalAlignment(10);
-        label4.setText("Constants");
+        final JLabel label5 = new JLabel();
+        label5.setEnabled(true);
+        Font label5Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label5.getFont());
+        if (label5Font != null) label5.setFont(label5Font);
+        label5.setHorizontalAlignment(10);
+        label5.setText("Constants");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        panel8.add(label4, gbc);
+        panel8.add(label5, gbc);
         final JPanel panel9 = new JPanel();
         panel9.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -890,15 +911,15 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.BOTH;
         panel8.add(panel9, gbc);
-        final JLabel label5 = new JLabel();
-        label5.setFocusTraversalPolicyProvider(false);
-        label5.setHorizontalAlignment(0);
-        label5.setHorizontalTextPosition(0);
-        label5.setText("Test Intensity");
+        final JLabel label6 = new JLabel();
+        label6.setFocusTraversalPolicyProvider(false);
+        label6.setHorizontalAlignment(0);
+        label6.setHorizontalTextPosition(0);
+        label6.setText("Test Intensity");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        panel9.add(label5, gbc);
+        panel9.add(label6, gbc);
         testIntensitySlider = new JSlider();
         testIntensitySlider.setMaximum(30);
         testIntensitySlider.setMinimum(1);
@@ -928,13 +949,13 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel9.add(SpamFactorSlider, gbc);
-        final JLabel label6 = new JLabel();
-        label6.setText("Spam Factor");
+        final JLabel label7 = new JLabel();
+        label7.setText("Spam Factor");
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        panel9.add(label6, gbc);
+        panel9.add(label7, gbc);
         final JPanel spacer1 = new JPanel();
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
@@ -1002,15 +1023,15 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.VERTICAL;
         panel10.add(panel11, gbc);
-        final JLabel label7 = new JLabel();
-        Font label7Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label7.getFont());
-        if (label7Font != null) label7.setFont(label7Font);
-        label7.setText("Cost Planning");
+        final JLabel label8 = new JLabel();
+        Font label8Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label8.getFont());
+        if (label8Font != null) label8.setFont(label8Font);
+        label8.setText("Cost Planning");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        panel11.add(label7, gbc);
+        panel11.add(label8, gbc);
         CostPlanningDisplay = new JLabel();
         CostPlanningDisplay.setText("0");
         gbc = new GridBagConstraints();
@@ -1036,15 +1057,15 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.VERTICAL;
         panel10.add(panel12, gbc);
-        final JLabel label8 = new JLabel();
-        Font label8Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label8.getFont());
-        if (label8Font != null) label8.setFont(label8Font);
-        label8.setText("Cats in Tree");
+        final JLabel label9 = new JLabel();
+        Font label9Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label9.getFont());
+        if (label9Font != null) label9.setFont(label9Font);
+        label9.setText("Cats in Tree");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        panel12.add(label8, gbc);
+        panel12.add(label9, gbc);
         CatsInTreeDisplay = new JLabel();
         CatsInTreeDisplay.setText("0");
         gbc = new GridBagConstraints();
@@ -1060,17 +1081,17 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.VERTICAL;
         panel10.add(panel13, gbc);
-        final JLabel label9 = new JLabel();
-        Font label9Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label9.getFont());
-        if (label9Font != null) label9.setFont(label9Font);
-        label9.setHorizontalAlignment(2);
-        label9.setHorizontalTextPosition(2);
-        label9.setText("Fluffiest");
+        final JLabel label10 = new JLabel();
+        Font label10Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label10.getFont());
+        if (label10Font != null) label10.setFont(label10Font);
+        label10.setHorizontalAlignment(2);
+        label10.setHorizontalTextPosition(2);
+        label10.setText("Fluffiest");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        panel13.add(label9, gbc);
+        panel13.add(label10, gbc);
         FluffiestDisplay = new JLabel();
         FluffiestDisplay.setText("0");
         gbc = new GridBagConstraints();
@@ -1086,16 +1107,16 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.VERTICAL;
         panel10.add(panel14, gbc);
-        final JLabel label10 = new JLabel();
-        Font label10Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label10.getFont());
-        if (label10Font != null) label10.setFont(label10Font);
-        label10.setText("Fluffiest From Month");
+        final JLabel label11 = new JLabel();
+        Font label11Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label11.getFont());
+        if (label11Font != null) label11.setFont(label11Font);
+        label11.setText("Fluffiest From Month");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
         gbc.anchor = GridBagConstraints.WEST;
-        panel14.add(label10, gbc);
+        panel14.add(label11, gbc);
         FluffiestFromMonthSpinner = new JSpinner();
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -1114,15 +1135,15 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel14.add(spacer2, gbc);
-        final JLabel label11 = new JLabel();
-        Font label11Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label11.getFont());
-        if (label11Font != null) label11.setFont(label11Font);
-        label11.setText("Automatic Tests");
+        final JLabel label12 = new JLabel();
+        Font label12Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label12.getFont());
+        if (label12Font != null) label12.setFont(label12Font);
+        label12.setText("Automatic Tests");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.anchor = GridBagConstraints.WEST;
-        panel10.add(label11, gbc);
+        panel10.add(label12, gbc);
         spamAddButton = new JButton();
         spamAddButton.setText("Spam Add");
         gbc = new GridBagConstraints();
@@ -1137,16 +1158,16 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 7;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel7.add(spamRemoveButton, gbc);
-        final JLabel label12 = new JLabel();
-        label12.setEnabled(true);
-        Font label12Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label12.getFont());
-        if (label12Font != null) label12.setFont(label12Font);
-        label12.setText("Tree Manipulation");
+        final JLabel label13 = new JLabel();
+        label13.setEnabled(true);
+        Font label13Font = this.$$$getFont$$$("Arial Black", Font.BOLD, 14, label13.getFont());
+        if (label13Font != null) label13.setFont(label13Font);
+        label13.setText("Tree Manipulation");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.anchor = GridBagConstraints.WEST;
-        panel7.add(label12, gbc);
+        panel7.add(label13, gbc);
     }
 
     /**
