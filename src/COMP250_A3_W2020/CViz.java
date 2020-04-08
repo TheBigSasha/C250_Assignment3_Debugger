@@ -48,6 +48,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     private JLabel SpamFactorDisplay;
     private JLabel TestIntensityDisplay;
     private JLabel Status;
+    private JRadioButton drawSubtreesRadioButton;
     protected int randomnessCoeff = 2;
     //Randomization engine for assignment related objects
     private RandomCats rand = new RandomCats();             //Random cat generator
@@ -67,7 +68,6 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         addListeners();                                     //Binds listeners for UI
         refresh();                                          //Draws the graphics elements
     }
-
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("CViz");
@@ -94,9 +94,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         rand = new RandomCats();
         //ListOfCatsSide.add(new CatNodeDrawing(rand.nextCatNode()));
         refresh();
-
     }
-
 
     private int sum(int[] input) {
         int output = 0;
@@ -233,6 +231,26 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     //======================= UI Listener Methods =========================
 
     private void addListeners() {
+        catScroller.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                if (drawSubtreesRadioButton.isSelected()) {
+                    ListOfCatsSide.repaint();
+                }
+            }
+        });
+        catScroller.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                refresh();
+            }
+        });
+        drawSubtreesRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refresh();
+            }
+        });
         SpamFactorSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -703,7 +721,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         gbc = new GridBagConstraints();
-        gbc.gridx = 1;
+        gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.SOUTH;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -768,7 +786,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         final JPanel panel5 = new JPanel();
         panel5.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.BOTH;
         panel1.add(panel5, gbc);
@@ -794,6 +812,13 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
         panel5.add(drawMonthHiredRadioButton, gbc);
+        drawSubtreesRadioButton = new JRadioButton();
+        drawSubtreesRadioButton.setText("Draw Subtrees");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel1.add(drawSubtreesRadioButton, gbc);
         catScroller = new JScrollPane();
         catScroller.setHorizontalScrollBarPolicy(30);
         catScroller.setMaximumSize(new Dimension(400, 32767));
@@ -1140,23 +1165,31 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
 //======================= UI Element Nested Classes =========================
 
     class GraphZone extends JPanel {                    //Responsible for drawing the binary tree
+        Dimension idealSize;
+        CatNode startNode = root;
+        boolean mainWindow = false;
 
         public GraphZone() {
-            setBorder(BorderFactory.createLineBorder(Color.black));
+            //setBorder(BorderFactory.createLineBorder(Color.black));
+            this.idealSize = new Dimension(1280, 800);
+            this.mainWindow = true;
+        }
+
+        public GraphZone(Dimension d, CatNode startNode) {
+            this.idealSize = d;
+            this.startNode = startNode;
         }
 
         public Dimension getPreferredSize() {
-            Dimension idealSize = new Dimension(1280, 800);
-            //showUser("    [CViz / Debug] " + idealSize);
-            return idealSize;      //TODO: Dynamic sizing
+            return this.idealSize;      //TODO: Dynamic sizing
         }
 
         public void paintComponent(Graphics g) {
             //Draw the tree
             super.paintComponent(g);
             int[] start = {this.getWidth() / 2, 20};
-            if (root != null) {
-                drawNodeWithChildren(g, start, root);
+            if (startNode != null) {
+                drawNodeWithChildren(g, start, startNode);
             } else {
                 g.drawString("root is null; tree is empty", this.getWidth() / 2, this.getHeight() / 2);
                 g.drawString("root is null; tree is empty", this.getWidth() / 2, 20);
@@ -1166,16 +1199,18 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             this.setPreferredSize(this.getPreferredSize());
 
             //Attempt to automatically scroll to the middle of the graphics region
-            try {
-                GraphScroller.getHorizontalScrollBar().setValue(GraphRegion.getWidth() / 3);
-            } catch (Exception e) {
+            if (mainWindow) {
                 try {
-                    GraphScroller.getHorizontalScrollBar().setValue(GraphScroller.getWidth() / 2);
-                } catch (Exception f) {
+                    GraphScroller.getHorizontalScrollBar().setValue(GraphRegion.getWidth() / 3);
+                } catch (Exception e) {
                     try {
-                        GraphScroller.getHorizontalScrollBar().setValue(600);
-                    } catch (Exception n) {
-                        //showUser("    [CViz / Debug] " + "not resized");
+                        GraphScroller.getHorizontalScrollBar().setValue(GraphScroller.getWidth() / 2);
+                    } catch (Exception f) {
+                        try {
+                            GraphScroller.getHorizontalScrollBar().setValue(600);
+                        } catch (Exception n) {
+                            //showUser("    [CViz / Debug] " + "not resized");
+                        }
                     }
                 }
             }
@@ -1221,14 +1256,24 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             if (node.senior != null) {
                 g.setColor(Color.BLUE);
                 //showUser("    [CViz / Debug] " + "recursing to senior");
-                int[] nodeSenCoords = {coords[0] - ((35 + (int) Math.round(Math.sqrt(coords[1])) * wideningCoeff + (int) Math.round(Math.pow(randomnessCoeff / 2.0 - rand.nextInt(Math.abs(randomnessCoeff)), 2)) + (3 - rand.nextInt(3 * randomnessCoeff)))), coords[1] + (50 + (7 - rand.nextInt(14)))};
+                int[] nodeSenCoords;
+                if (mainWindow) {
+                    nodeSenCoords = new int[]{coords[0] - ((35 + (int) Math.round(Math.sqrt(coords[1])) * wideningCoeff + (int) Math.round(Math.pow(randomnessCoeff / 2.0 - rand.nextInt(Math.abs(randomnessCoeff)), 2)) + (3 - rand.nextInt(3 * randomnessCoeff)))), coords[1] + (50 + (7 - rand.nextInt(14)))};
+                } else {
+                    nodeSenCoords = new int[]{coords[0] - ((35 + (int) Math.round(Math.sqrt(coords[1])))), coords[1] + 35};
+                }
                 g.drawLine(coords[0], coords[1], nodeSenCoords[0], nodeSenCoords[1]);
                 drawNodeWithChildren(g, nodeSenCoords, node.senior);
             }
             if (node.junior != null) {
                 g.setColor(Color.DARK_GRAY);
                 //showUser("    [CViz / Debug] " + "recursing to junior");
-                int[] nodeJunCoords = {coords[0] + ((35 + (int) Math.round(Math.sqrt(coords[1])) * wideningCoeff + (int) Math.round(Math.pow(randomnessCoeff / 2.0 - rand.nextInt(Math.abs(randomnessCoeff)), 2)) + (3 - rand.nextInt(3 * randomnessCoeff)))), coords[1] + (50 + (7 - rand.nextInt(14)))};
+                int[] nodeJunCoords;
+                if (mainWindow) {
+                    nodeJunCoords = new int[]{coords[0] + ((35 + (int) Math.round(Math.sqrt(coords[1])) * wideningCoeff + (int) Math.round(Math.pow(randomnessCoeff / 2.0 - rand.nextInt(Math.abs(randomnessCoeff)), 2)) + (3 - rand.nextInt(3 * randomnessCoeff)))), coords[1] + (50 + (7 - rand.nextInt(14)))};
+                } else {
+                    nodeJunCoords = new int[]{coords[0] + ((35 + (int) Math.round(Math.sqrt(coords[1])))), coords[1] + 35};
+                }
                 g.drawLine(coords[0], coords[1], nodeJunCoords[0], nodeJunCoords[1]);
                 drawNodeWithChildren(g, nodeJunCoords, node.junior);
             }
@@ -1376,8 +1421,11 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             private JTextArea BigText;
             private JButton removeButton;
             private JPanel removeBtn;
+            private JPanel graphArea;
+            private GraphZone gZ;
 
             public CatBox() {
+                $$$setupUI$$$();
                 data = new RandomCats().nextCatInfo();
                 BigText.setText(data.name);
                 LowerPanel.add(new JLabel("Hired " + data.monthHired));
@@ -1385,8 +1433,8 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
                 LowerPanel.add(new JLabel("Next App. " + data.nextGroomingAppointment));
                 LowerPanel.add(new JLabel("Cost " + data.expectedGroomingCost));
                 this.setSize(70, 30);
+                CatNodeDrawing.this.createUIComponents();
                 addListeners();
-
             }
 
             public CatBox(CatInfo data) {
@@ -1394,12 +1442,14 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
                     return;
                 }
                 this.data = data;
+                $$$setupUI$$$();
                 BigText.setText(data.name);
                 LowerPanel.add(new JLabel("Hired " + data.monthHired));
                 LowerPanel.add(new JLabel("Fur " + data.furThickness));
                 LowerPanel.add(new JLabel("Next App. " + data.nextGroomingAppointment));
                 LowerPanel.add(new JLabel("Cost " + data.expectedGroomingCost));
                 this.setSize(70, 30);
+                //CatNodeDrawing.this.createUIComponents();
                 addListeners();
             }
 
@@ -1412,6 +1462,14 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
              }
         */
             private void addListeners() {
+
+                /*drawTreeButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GraphRegion.removeAll();
+                        GraphRegion.add(new GraphZone(new Dimension(1280, 800), findCat(root, data)));
+                    }
+                });*/
                 removeButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -1420,12 +1478,19 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
                 });
             }
 
-
-            {
-// GUI initializer generated by IntelliJ IDEA GUI Designer
-// >>> IMPORTANT!! <<<
-// DO NOT EDIT OR ADD ANY CODE HERE!
-                $$$setupUI$$$();
+            private void createUIComponents() {
+                try {
+                    if (drawSubtreesRadioButton.isSelected()) {
+                        gZ = new GraphZone(new Dimension(200, 100), findCat(root, data));
+                        this.graphArea = new JPanel();
+                        graphArea.add(gZ);
+                        gZ.repaint();
+                    } else {
+                        this.graphArea = new JPanel();
+                    }
+                } catch (NullPointerException e) {
+                    this.graphArea = new JPanel();
+                }
             }
 
             /**
@@ -1436,6 +1501,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
              * @noinspection ALL
              */
             private void $$$setupUI$$$() {
+                createUIComponents();
                 final JPanel panel1 = new JPanel();
                 panel1.setLayout(new GridBagLayout());
                 mainPanel = new JPanel();
@@ -1476,6 +1542,11 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
                 removeButton = new JButton();
                 removeButton.setText("remove");
                 removeBtn.add(removeButton);
+                gbc = new GridBagConstraints();
+                gbc.gridx = 0;
+                gbc.gridy = 2;
+                gbc.fill = GridBagConstraints.BOTH;
+                mainPanel.add(graphArea, gbc);
             }
 
             /**
