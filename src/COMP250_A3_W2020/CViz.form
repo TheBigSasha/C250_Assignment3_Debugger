@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="COMP250_A3_W2020.CViz">
   <grid id="27dc6" binding="MainWindow" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="1300" height="444"/>
+      <xy x="20" y="20" width="1300" height="687"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -90,6 +90,8 @@
                         <properties>
                           <maximum value="22"/>
                           <minimum value="1"/>
+                          <paintLabels value="true"/>
+                          <paintTicks value="true"/>
                           <value value="2"/>
                         </properties>
                       </component>
@@ -163,8 +165,9 @@
           <preferredSize width="350" height="10"/>
           <verticalScrollBarPolicy value="22"/>
         </properties>
-        <border type="none" title="Cats in Order" title-justification="2">
-          <font/>
+        <border type="none" title="Cats in Order" title-justification="1" title-position="2">
+          <font name="Arial Black" size="14" style="1"/>
+          <title-color color="-16777216"/>
         </border>
         <children>
           <grid id="10b58" binding="ListOfCatsSide" custom-create="true" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
@@ -175,248 +178,391 @@
           </grid>
         </children>
       </scrollpane>
-      <grid id="1c00a" layout-manager="GridBagLayout">
-        <constraints border-constraint="East"/>
+      <grid id="ba7cf" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="30fc5" class="javax.swing.JButton" binding="stressTestButton" default-binding="true">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
+          <component id="7f356" class="javax.swing.JLabel">
+            <constraints border-constraint="West"/>
             <properties>
-              <text value="Stress Test"/>
+              <text value="Status:"/>
             </properties>
           </component>
-          <grid id="73e70" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
+          <component id="5712c" class="javax.swing.JLabel" binding="Status">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <horizontalTextPosition value="2"/>
+              <text value="&lt;current status&gt;"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <scrollpane id="59441">
+        <constraints border-constraint="East"/>
+        <properties>
+          <horizontalScrollBarPolicy value="31"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="1c00a" layout-manager="GridBagLayout">
+            <constraints/>
             <properties/>
             <border type="none"/>
             <children>
-              <component id="784b0" class="javax.swing.JLabel">
+              <component id="30fc5" class="javax.swing.JButton" binding="stressTestButton" default-binding="true">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
-                  <focusTraversalPolicyProvider value="false"/>
-                  <horizontalAlignment value="0"/>
-                  <horizontalTextPosition value="0"/>
-                  <text value="Test Constant"/>
+                  <text value="Stress Test"/>
                 </properties>
               </component>
-              <component id="7f8dd" class="javax.swing.JSlider" binding="testIntensitySlider">
+              <grid id="73e70" layout-manager="GridBagLayout">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <maximum value="30"/>
-                  <minimum value="1"/>
-                  <name value="Test Intensity"/>
-                  <orientation value="1"/>
-                  <paintLabels value="true"/>
-                  <paintTicks value="true"/>
-                  <toolTipText value="Test Intensity"/>
-                  <value value="10"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-          <component id="d7e2b" class="javax.swing.JButton" binding="AddRandomCat">
-            <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <text value="Add Random Cat"/>
-            </properties>
-          </component>
-          <component id="28491" class="javax.swing.JButton" binding="RemoveRandom">
-            <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <text value="Rem Random Cat"/>
-            </properties>
-          </component>
-          <component id="8b3" class="javax.swing.JButton" binding="AddCustom">
-            <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <text value="Add Custom Cat"/>
-            </properties>
-          </component>
-          <component id="5421a" class="javax.swing.JButton" binding="gradualTestButton" default-binding="true">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <text value="Gradual Test"/>
-            </properties>
-          </component>
-          <grid id="5248f" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <grid id="e14cc" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="6a38a" class="javax.swing.JLabel">
+                  <component id="b8d23" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
-                      <font size="22"/>
-                      <text value="Cost Planning"/>
+                      <enabled value="true"/>
+                      <font name="Arial Black" size="14" style="1"/>
+                      <horizontalAlignment value="10"/>
+                      <text value="Constants"/>
                     </properties>
                   </component>
-                  <component id="8d71a" class="javax.swing.JLabel" binding="CostPlanningDisplay">
+                  <grid id="23709" layout-manager="GridBagLayout">
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="0"/>
-                    </properties>
-                  </component>
-                  <component id="67528" class="javax.swing.JSlider" binding="CostPlanningSlider">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <maximum value="365"/>
-                      <minimum value="1"/>
-                      <toolTipText value="NumberofMonths"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="691d4" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="78b8" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <font size="22"/>
-                      <text value="Cats in Tree"/>
-                    </properties>
-                  </component>
-                  <component id="dd9ec" class="javax.swing.JLabel" binding="CatsInTreeDisplay">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="0"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="7ae5f" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="1e370" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <font size="22"/>
-                      <horizontalAlignment value="2"/>
-                      <horizontalTextPosition value="2"/>
-                      <text value="Fluffiest"/>
-                    </properties>
-                  </component>
-                  <component id="76e90" class="javax.swing.JLabel" binding="FluffiestDisplay">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="0"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="5f498" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="64c93" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <font size="22"/>
-                      <text value="Fluffiest From Month"/>
-                    </properties>
-                  </component>
-                  <component id="aa2f8" class="javax.swing.JSpinner" binding="FluffiestFromMonthSpinner">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties/>
-                  </component>
-                  <component id="7b54e" class="javax.swing.JLabel" binding="FluffiestFromMonthDisplay">
+                    <border type="none"/>
+                    <children>
+                      <component id="784b0" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <focusTraversalPolicyProvider value="false"/>
+                          <horizontalAlignment value="0"/>
+                          <horizontalTextPosition value="0"/>
+                          <text value="Test Intensity"/>
+                        </properties>
+                      </component>
+                      <component id="7f8dd" class="javax.swing.JSlider" binding="testIntensitySlider">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <maximum value="30"/>
+                          <minimum value="1"/>
+                          <name value="Test Intensity"/>
+                          <orientation value="1"/>
+                          <paintLabels value="true"/>
+                          <paintTicks value="true"/>
+                          <toolTipText value="Test Intensity"/>
+                          <value value="10"/>
+                        </properties>
+                      </component>
+                      <component id="614dd" class="javax.swing.JSlider" binding="SpamFactorSlider">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <maximum value="200"/>
+                          <minimum value="1"/>
+                          <orientation value="1"/>
+                          <paintLabels value="true"/>
+                          <paintTicks value="true"/>
+                          <snapToTicks value="false"/>
+                          <toolTipText value="Spam Factor"/>
+                        </properties>
+                      </component>
+                      <component id="1338" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Spam Factor"/>
+                        </properties>
+                      </component>
+                      <hspacer id="f0a5a">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                      <component id="cb5ee" class="javax.swing.JLabel" binding="SpamFactorDisplay">
+                        <constraints>
+                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="0"/>
+                          <horizontalTextPosition value="0"/>
+                          <text value="Factor"/>
+                        </properties>
+                      </component>
+                      <component id="9135d" class="javax.swing.JLabel" binding="TestIntensityDisplay">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="0"/>
+                          <horizontalTextPosition value="0"/>
+                          <text value="Intensity"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <component id="d7e2b" class="javax.swing.JButton" binding="AddRandomCat">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Add Random Cat"/>
+                </properties>
+              </component>
+              <component id="28491" class="javax.swing.JButton" binding="RemoveRandom">
+                <constraints>
+                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Rem Random Cat"/>
+                </properties>
+              </component>
+              <component id="8b3" class="javax.swing.JButton" binding="AddCustom">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Add Custom Cat"/>
+                </properties>
+              </component>
+              <component id="5421a" class="javax.swing.JButton" binding="gradualTestButton" default-binding="true">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Gradual Test"/>
+                </properties>
+              </component>
+              <grid id="5248f" layout-manager="GridBagLayout">
+                <constraints>
+                  <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="e14cc" layout-manager="GridBagLayout">
                     <constraints>
-                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="6a38a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <font name="Arial Black" size="14" style="1"/>
+                          <text value="Cost Planning"/>
+                        </properties>
+                      </component>
+                      <component id="8d71a" class="javax.swing.JLabel" binding="CostPlanningDisplay">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="0"/>
+                        </properties>
+                      </component>
+                      <component id="67528" class="javax.swing.JSlider" binding="CostPlanningSlider">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <maximum value="365"/>
+                          <minimum value="1"/>
+                          <toolTipText value="NumberofMonths"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="691d4" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="78b8" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <font name="Arial Black" size="14" style="1"/>
+                          <text value="Cats in Tree"/>
+                        </properties>
+                      </component>
+                      <component id="dd9ec" class="javax.swing.JLabel" binding="CatsInTreeDisplay">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="7ae5f" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="1e370" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <font name="Arial Black" size="14" style="1"/>
+                          <horizontalAlignment value="2"/>
+                          <horizontalTextPosition value="2"/>
+                          <text value="Fluffiest"/>
+                        </properties>
+                      </component>
+                      <component id="76e90" class="javax.swing.JLabel" binding="FluffiestDisplay">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="5f498" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="64c93" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <font name="Arial Black" size="14" style="1"/>
+                          <text value="Fluffiest From Month"/>
+                        </properties>
+                      </component>
+                      <component id="aa2f8" class="javax.swing.JSpinner" binding="FluffiestFromMonthSpinner">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="7b54e" class="javax.swing.JLabel" binding="FluffiestFromMonthDisplay">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <text value="None"/>
+                        </properties>
+                      </component>
+                      <hspacer id="930a0">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="0.0" weighty="0.0"/>
+                        </constraints>
+                      </hspacer>
+                    </children>
+                  </grid>
+                  <component id="7b1d5" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
-                      <text value="None"/>
+                      <font name="Arial Black" size="14" style="1"/>
+                      <text value="Automatic Tests"/>
                     </properties>
                   </component>
-                  <hspacer id="930a0">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </hspacer>
                 </children>
               </grid>
+              <component id="46d86" class="javax.swing.JButton" binding="spamAddButton" default-binding="true">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Spam Add"/>
+                </properties>
+              </component>
+              <component id="1f6ef" class="javax.swing.JButton" binding="spamRemoveButton" default-binding="true">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="Spam Remove"/>
+                </properties>
+              </component>
+              <component id="352c9" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                  <font name="Arial Black" size="14" style="1"/>
+                  <text value="Tree Manipulation"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>
-      </grid>
+      </scrollpane>
     </children>
   </grid>
 </form>

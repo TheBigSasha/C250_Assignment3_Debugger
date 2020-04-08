@@ -46,7 +46,7 @@
                 <properties>
                   <editable value="false"/>
                   <enabled value="true"/>
-                  <font size="20"/>
+                  <font name="Arial" size="14" style="0"/>
                   <opaque value="false"/>
                   <wrapStyleWord value="true"/>
                 </properties>

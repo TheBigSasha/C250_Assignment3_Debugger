@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7734e7e-5730-42e8-8760-77d7c1343762" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/COMP250_A3_W2020/CatBox.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/COMP250_A3_W2020/CatBox.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/COMP250_A3_W2020/CatNodeDrawing.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/COMP250_A3_W2020/CatNodeDrawing.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +93,7 @@
       <workItem from="1586296417533" duration="52000" />
       <workItem from="1586296477423" duration="63000" />
       <workItem from="1586300846905" duration="2026000" />
-      <workItem from="1586304994166" duration="2636000" />
+      <workItem from="1586304994166" duration="19567000" />
     </task>
     <task id="LOCAL-00001" summary="remove IntelliJ specific UI elements">
       <created>1586035512776</created>
@@ -126,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586306186824</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add superior readouts for remove failures">
+      <created>1586307661841</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586307661841</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +149,8 @@
     <MESSAGE value="change code generation from class to source, remove GridLayoutManager (unsupported in Eclipse)" />
     <MESSAGE value="Fix IntelliJ IDEA settings" />
     <MESSAGE value="Add Null root handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Null root handling" />
+    <MESSAGE value="Add superior readouts for remove failures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add superior readouts for remove failures" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -160,11 +172,19 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="734" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586304927167" />
-    <state x="413" y="137" width="1245" height="847" key="CommitChangelistDialog2" timestamp="1586306186174">
+    <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser" timestamp="1586326169691">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="413" y="137" key="CommitChangelistDialog2/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586306186174" />
+    <state x="1085" y="414" key="#com.intellij.ide.util.MemberChooser/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586326169691" />
+    <state x="413" y="137" width="1245" height="847" key="CommitChangelistDialog2" timestamp="1586307661311">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="413" y="137" key="CommitChangelistDialog2/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586307661311" />
     <state x="366" y="129" width="1245" height="847" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296530898" />
+    <state width="380" height="466" key="DebuggerActiveHint" timestamp="1586319392618">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="380" height="466" key="DebuggerActiveHint/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586319392618" />
     <state x="167" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1586286963415">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -182,35 +202,35 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="650" y="239" width="677" height="626" key="Github.UntrackedFilesDialog/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296516670" />
-    <state width="2519" height="404" key="GridCell.Tab.0.bottom" timestamp="1586307449445">
+    <state width="2520" height="368" key="GridCell.Tab.0.bottom" timestamp="1586329229698">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.bottom/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586307449445" />
+    <state width="2520" height="368" key="GridCell.Tab.0.bottom/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586329229698" />
     <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
-    <state width="2519" height="404" key="GridCell.Tab.0.center" timestamp="1586307449444">
+    <state width="2520" height="368" key="GridCell.Tab.0.center" timestamp="1586329229698">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.center/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586307449444" />
+    <state width="2520" height="368" key="GridCell.Tab.0.center/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586329229698" />
     <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
-    <state width="2519" height="404" key="GridCell.Tab.0.left" timestamp="1586307449444">
+    <state width="2520" height="368" key="GridCell.Tab.0.left" timestamp="1586329229698">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.left/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586307449444" />
+    <state width="2520" height="368" key="GridCell.Tab.0.left/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586329229698" />
     <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
-    <state width="2519" height="404" key="GridCell.Tab.0.right" timestamp="1586307449444">
+    <state width="2520" height="368" key="GridCell.Tab.0.right" timestamp="1586329229698">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="2519" height="404" key="GridCell.Tab.0.right/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586307449444" />
+    <state width="2520" height="368" key="GridCell.Tab.0.right/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586329229698" />
     <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286924049" />
     <state x="573" y="214" width="1024" height="845" key="SettingsEditor" timestamp="1586304624953">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="573" y="214" key="SettingsEditor/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586304624953" />
     <state x="482" y="187" width="1024" height="845" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296539342" />
-    <state x="720" y="349" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586306188945">
+    <state x="720" y="349" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1586307662929">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="720" y="349" key="Vcs.Push.Dialog.v2/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586306188945" />
+    <state x="720" y="349" key="Vcs.Push.Dialog.v2/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586307662929" />
     <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586296531830" />
     <state x="804" y="473" key="com.intellij.ide.util.TipDialog" timestamp="1586304995251">
       <screen x="0" y="0" width="2560" height="1410" />
@@ -221,27 +241,33 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="764" y="467" width="458" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1586286963374" />
+    <state x="1010" y="486" key="extract.method.dialog" timestamp="1586312120264">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1010" y="486" key="extract.method.dialog/-1920.351.1920.1050/0.0.2560.1410/-5760.0.1707.930@0.0.2560.1410" timestamp="1586312120264" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/COMP250_A3_W2020/MiniTester.java</url>
           <line>239</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/COMP250_A3_W2020/CViz.java</url>
-          <line>55</line>
-          <properties class="COMP250_A3_W2020.CViz" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="13" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/COMP250_A3_W2020/CatTree.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/COMP250_A3_W2020/CatTree.java</url>
+          <line>221</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/COMP250_A3_W2020/CatTree.java</url>
+          <line>326</line>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

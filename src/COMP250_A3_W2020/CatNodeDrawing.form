@@ -33,7 +33,7 @@
               <editable value="false"/>
               <enabled value="false"/>
               <focusable value="false"/>
-              <font size="18"/>
+              <font name="Franklin Gothic Medium Cond" size="14"/>
               <lineWrap value="true"/>
               <opaque value="true"/>
               <visible value="false"/>
