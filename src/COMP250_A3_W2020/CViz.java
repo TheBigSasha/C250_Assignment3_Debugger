@@ -335,6 +335,8 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
 
     //======================== Auto Tester Methods =======================
     private String removeRandom() {
+        CatNode root = this.root;
+        CatNode victim;
         ArrayList<CatInfo> list = new ArrayList<>();
         CatTreeIterator iter = new CatTreeIterator();
         for (CatTreeIterator it = iter; it.hasNext(); ) {
@@ -345,6 +347,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         int whichToRemove = 0;
         if (list.size() > 0) {
             whichToRemove = rand.nextInt(list.size());
+            victim = (this.findCat(root, list.get(whichToRemove)));
         } else {
             return "No nodes to remove from";
         }
@@ -356,7 +359,34 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - 1) {
-            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter + " cat removed was " + list.get(whichToRemove).name;
+            String catString;
+            try {
+                StringBuilder sb = new StringBuilder();
+                if (victim.same != null) {
+                    sb.append(", had a same");
+                }
+                if (isLeaf(victim)) sb.append(" a leaf node");
+                else if (victim.senior == null || victim.junior == null) {
+                    sb.append(", had one child");
+                } else {
+                    sb.append(", had two children");
+                }
+                if (victim.data.equals(root.data)) {
+                    sb.append(", was the same as root");
+                } else if (victim.data.monthHired > root.data.monthHired) {
+                    sb.append(", was junior to root");
+                } else if (victim.data.monthHired < root.data.monthHired) {
+                    sb.append(", was senior to root");
+                } else {
+                    sb.append(", was same as root");
+                }
+
+                catString = sb.toString();
+
+            } catch (Exception e) {
+                catString = "not able to be found in tree before remove";
+            }
+            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter + " cat removed was " + list.get(whichToRemove).name + catString;
         } else {
             return "Random remove probably succeeded. Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
         }
@@ -431,6 +461,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
     }
 
     private String removeCats() {
+        ArrayList<CatNode> theDeparted = new ArrayList<>();
         ArrayList<CatInfo> list = new ArrayList<>();
         CatTreeIterator iter = new CatTreeIterator();
         for (CatTreeIterator it = iter; it.hasNext(); ) {
@@ -443,6 +474,7 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
         int whichToRemove;
         while (list.size() != numberOfNodesBefore - toExtermiante) {
             whichToRemove = rand.nextInt(list.size());
+            theDeparted.add(this.findCat(root, list.get(whichToRemove)));
             removeCat(list.get(whichToRemove));
         }
         CatTreeIterator iter2 = new CatTreeIterator();
@@ -452,9 +484,30 @@ public class CViz extends CatTree {                         //TODO: Cleanup cons
             numberOfNodesAfter++;
         }
         if (numberOfNodesAfter != numberOfNodesBefore - toExtermiante) {
-            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
+            return "Remove error? Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter + " CatNodes to remove were multiple";
         } else {
             return "Random remove probably succeeded. Number of cats before remove was " + numberOfNodesBefore + " after remove was " + numberOfNodesAfter;
+        }
+    }
+
+    private boolean isLeaf(CatNode c) {
+        return c.junior == null && c.senior == null && c.same == null;
+    }
+
+    private CatNode findCat(CatNode iter, CatInfo c) {
+        if (iter.data.equals(c)) {
+            return iter;
+        }
+        if (iter.data.monthHired == c.monthHired) {
+            if (iter.data.furThickness > c.furThickness) {
+                return findCat(iter.same, c);       //Traverses the list in this order cuz that is good
+            } else {
+                return null;
+            }
+        } else if (iter.data.monthHired > c.monthHired) {
+            return findCat(iter.senior, c);
+        } else {
+            return findCat(iter.junior, c);
         }
     }
 
