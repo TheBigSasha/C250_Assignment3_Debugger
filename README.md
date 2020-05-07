@@ -45,6 +45,9 @@ Draw a line connecting a node to the node being recursed to.
 Represent the linkedlist stored in each node with a visualization following loosely the visualization algorithm from assignment 2.
 
 ### Possible improvements:
-Auto scaling: before initial traversal, calculate width and height of tree and scale offset factors to fill the window size for any tree.
-Alternative offsets: Use non-linear / non-randomized offets of some kind to reduce overlap with dense trees.
-In-operation visualization: Visualize the tree traversal by highlighting the "current" node as in the A2 debugger. This would require access/modificiation to assignment source code.
+#### Auto scaling:
+before initial traversal, calculate width and height of tree and scale offset factors to fill the window size for any tree.
+#### Alternative offsets:
+Use non-linear / non-randomized offets of some kind to reduce overlap with dense trees.
+#### In-operation visualization:
+Visualize the tree traversal by highlighting the "current" node as in the A2 debugger. This would require access/modificiation to assignment source code.
