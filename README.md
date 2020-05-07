@@ -1,4 +1,5 @@
 # Visualizer & Debugger for Comp250 Assignment 3 @ McGill University
+![screenshot](https://sashaphotoca.files.wordpress.com/2020/04/2020-04-18-23_39_23-cviz.png)
 
 # What does it do
 This tester provides a visual interface for interacting with your binary tree. More feaures for automated testing to be added. Have fun!
