@@ -33,4 +33,18 @@ Want to contribute to the project? Feel free to [fork this repository](https://h
 
 For any questions, contact me at sasha@sashaphoto.ca
 
+# Visualization algorithm:
 
+### In order to visualize this data structure, the basic algorithm is:
+Traverse the data structure, upon each traversal to the "next" node, draw a representation of the node on screen with a certain offset and display some information.
+
+### Applied to the bTree, this algorithm looks like:
+Start tree traversal at a node.
+Traverse through the subtrees, keeping track of pixel offset on each recursion.
+Draw a line connecting a node to the node being recursed to.
+Represent the linkedlist stored in each node with a visualization following loosely the visualization algorithm from assignment 2.
+
+### Possible improvements:
+Auto scaling: before initial traversal, calculate width and height of tree and scale offset factors to fill the window size for any tree.
+Alternative offsets: Use non-linear / non-randomized offets of some kind to reduce overlap with dense trees.
+In-operation visualization: Visualize the tree traversal by highlighting the "current" node as in the A2 debugger. This would require access/modificiation to assignment source code.
